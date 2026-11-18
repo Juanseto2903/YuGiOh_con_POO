@@ -55,11 +55,11 @@ YuGiOh_con_POO/
   * **Ataque Directo:** Si no hay monstruo defensor, el daño impacta directamente los LP del jugador rival.
 * **RF4 (Persistencia):** Cada turno se agrega automáticamente al archivo `historial_combate.txt`.
 
-### 3. Pruebas Unitarias con JUnit 5
-* La suite `LogicaCombateTest` valida de forma aislada:
-  1. `testAtaqueDirectoReduceLP()`
-  2. `testAtaqueVsAtaqueMayorDestruyeYReduceLP()`
-  3. `testAtaqueVsDefensaNoReduceLPAlDestruirDefensor()`
+## 3. Pruebas Unitarias (JUnit 5)
+La clase `LogicaCombateTest` valida matemáticamente y de forma independiente:
+1. Reducción de LP en ataque directo (`testAtaqueDirectoReduceLP`).
+2. Cálculo de diferencia de ATK y destrucción en Ataque vs. Ataque (`testAtaqueVsAtaque`).
+3. Destrucción sin daño a LP en Ataque vs. Defensa (`testAtaqueVsDefensaNoReduceLP`).
 
 ### 4. Control de Versiones con Git y GitHub 
 * Desarrollo estructurado en rama personal (`juan_torres_dev`) con historial incremental de commits y fusión hacia `main` mediante **Pull Request**.
@@ -78,5 +78,3 @@ YuGiOh_con_POO/
 ## Autor
 * **Estudiante:** Juan Sebastián Torres Pantoja
 * **Programa:** Ingeniería de Datos e Inteligencia Artificial
-* **Asignatura:** Programación Orientada a Objetos
-* **Institución:** Universidad Autónoma de Occidente (UAO) — Santiago de Cali, Colombia

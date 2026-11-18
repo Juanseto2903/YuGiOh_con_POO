@@ -1,0 +1,126 @@
+<mxfile host="Electron" modified="2026-11-18T16:45:00.000Z" agent="Mozilla/5.0" version="22.1.2" type="device">
+  <diagram id="OOP-Yugi" name="Diagrama de Clases UML - Yu-Gi-Oh! MVC">
+    <mxGraphModel dx="1420" dy="920" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- INTERFACE BATALLABLE -->
+        <mxCell id="interface" value="&amp;lt;&amp;lt;interface&amp;gt;&amp;gt;&#xa;Batallable&#xa;--&#xa;--&#xa;+ ejecutarAtaque(atacante: Monstruo, defensor: Monstruo, jDefensor: Jugador): String&#xa;+ ejecutarAtaque(atacante: Monstruo, jDefensor: Jugador): String" style="shape=class;html=1;whiteSpace=wrap;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="450" y="30" width="460" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- ABSTRACT CLASS COMPONENTEJUEGO -->
+        <mxCell id="abstract" value="&amp;lt;&amp;lt;abstract&amp;gt;&amp;gt;&#xa;ComponenteJuego&#xa;--&#xa;+ {static} {final} FRANQUICIA: String = &quot;Yu-Gi-Oh!&quot;&#xa;+ nombre: String&#xa;--&#xa;+ {abstract} mostrarDetalle(): void" style="shape=class;html=1;whiteSpace=wrap;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=2" vertex="1" parent="1">
+          <mxGeometry x="70" y="30" width="310" height="120" as="geometry" />
+        </mxCell>
+
+        <!-- SUBCLASS 1: MONSTRUO (ONLY CONSTRUCTOR, GETTERS, SETTERS, TOSTRING) -->
+        <mxCell id="sub1" value="Monstruo&#xa;--&#xa;- atk: int&#xa;- def: int&#xa;- posicion: String&#xa;--&#xa;+ Monstruo(nombre: String, atk: int, def: int, posicion: String)&#xa;+ getAtk(): int&#xa;+ setAtk(atk: int): void&#xa;+ getDef(): int&#xa;+ setDef(def: int): void&#xa;+ getPosicion(): String&#xa;+ setPosicion(posicion: String): void&#xa;+ toString(): String&#xa;+ mostrarDetalle(): void" style="shape=class;html=1;whiteSpace=wrap;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="20" y="230" width="350" height="230" as="geometry" />
+        </mxCell>
+
+        <!-- SUBCLASS 2: JUGADOR (NO EXPLICIT CONSTRUCTOR, NO GETTERS/SETTERS/TOSTRING) -->
+        <mxCell id="sub2" value="Jugador&#xa;--&#xa;+ lp: int = 8000&#xa;--&#xa;+ mostrarDetalle(): void" style="shape=class;html=1;whiteSpace=wrap;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="220" y="510" width="180" height="90" as="geometry" />
+        </mxCell>
+
+        <!-- LOGICACOMBATE -->
+        <mxCell id="logic" value="LogicaCombate&#xa;--&#xa;--&#xa;+ ejecutarAtaque(atacante: Monstruo, defensor: Monstruo, jDefensor: Jugador): String&#xa;+ ejecutarAtaque(atacante: Monstruo, jDefensor: Jugador): String" style="shape=class;html=1;whiteSpace=wrap;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="450" y="210" width="460" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- GESTORPERSISTENCIA -->
+        <mxCell id="persistencia" value="GestorPersistencia&#xa;--&#xa;--&#xa;+ guardarHistorial(registro: String): void" style="shape=class;html=1;whiteSpace=wrap;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="950" y="220" width="240" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- CONTROLADORBATALLA -->
+        <mxCell id="controlador" value="ControladorBatalla&#xa;--&#xa;- logica: LogicaCombate&#xa;- persistencia: GestorPersistencia&#xa;--&#xa;+ procesarAtaque(atacante: Monstruo, defensor: Monstruo, jDefensor: Jugador): String&#xa;+ procesarAtaqueDirecto(atacante: Monstruo, jDefensor: Jugador): String" style="shape=class;html=1;whiteSpace=wrap;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="580" y="420" width="460" height="120" as="geometry" />
+        </mxCell>
+
+        <!-- VISTABATALLA -->
+        <mxCell id="vista" value="VistaBatalla&#xa;--&#xa;- controlador: ControladorBatalla&#xa;- jugadorDefensor: Jugador&#xa;--&#xa;+ main(args: String[]): void" style="shape=class;html=1;whiteSpace=wrap;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="680" y="630" width="260" height="110" as="geometry" />
+        </mxCell>
+
+        <!-- MAIN CLASS -->
+        <mxCell id="main" value="YuGiOh_con_POO&#xa;--&#xa;--&#xa;+ {static} main(args: String[]): void" style="shape=class;html=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#000000;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="80" y="660" width="240" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- HERENCIA (Generalization): Monstruo -> ComponenteJuego -->
+        <mxCell id="rel_herencia_1" value="Herencia" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=0;endSize=12;" edge="1" parent="1" source="sub1" target="abstract">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- HERENCIA (Generalization): Jugador -> ComponenteJuego -->
+        <mxCell id="rel_herencia_2" value="Herencia" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=0;endSize=12;" edge="1" parent="1" source="sub2" target="abstract">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="390" y="555" />
+              <mxPoint x="390" y="180" />
+              <mxPoint x="225" y="180" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- REALIZACION (Implementation): LogicaCombate ..|> Batallable -->
+        <mxCell id="rel_impl" value="Implementa" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=block;endFill=0;endSize=12;" edge="1" parent="1" source="logic" target="interface">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ASOCIACION: ControladorBatalla -> LogicaCombate -->
+        <mxCell id="rel_asoc_1" value="Asociación (1)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=open;endFill=0;" edge="1" parent="1" source="controlador" target="logic">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ASOCIACION: ControladorBatalla -> GestorPersistencia -->
+        <mxCell id="rel_asoc_2" value="Asociación (1)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=open;endFill=0;" edge="1" parent="1" source="controlador" target="persistencia">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ASOCIACION: VistaBatalla -> ControladorBatalla -->
+        <mxCell id="rel_asoc_3" value="Asociación (1)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=open;endFill=0;" edge="1" parent="1" source="vista" target="controlador">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- DEPENDENCIA: LogicaCombate ..> Monstruo -->
+        <mxCell id="rel_dep_1" value="Dependencia" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=open;endFill=0;" edge="1" parent="1" source="logic" target="sub1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- DEPENDENCIA: LogicaCombate ..> Jugador -->
+        <mxCell id="rel_dep_2" value="Dependencia" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=open;endFill=0;" edge="1" parent="1" source="logic" target="sub2">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="520" y="555" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- DEPENDENCIA: YuGiOh_con_POO ..> Monstruo -->
+        <mxCell id="rel_dep_main_1" value="Dependencia (Reporte 1)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=open;endFill=0;" edge="1" parent="1" source="main" target="sub1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="120" y="550" />
+              <mxPoint x="120" y="460" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- DEPENDENCIA: YuGiOh_con_POO ..> Jugador -->
+        <mxCell id="rel_dep_main_2" value="Dependencia (Reporte 2)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=open;endFill=0;" edge="1" parent="1" source="main" target="sub2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- DEPENDENCIA: YuGiOh_con_POO ..> VistaBatalla -->
+        <mxCell id="rel_dep_main_3" value="Dependencia (Inicia GUI)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=open;endFill=0;" edge="1" parent="1" source="main" target="vista">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
