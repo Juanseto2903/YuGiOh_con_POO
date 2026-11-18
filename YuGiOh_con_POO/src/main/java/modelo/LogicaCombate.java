@@ -16,7 +16,12 @@ public class LogicaCombate implements Batallable {
             if(atacante.getAtk() > defensor.getAtk()) {
                 int dano = atacante.getAtk() - defensor.getAtk();
                 jDefensor.lp -= dano;
-                return atacante.nombre + " destruye a " + defensor.nombre + ". Daño a LP: " + dano;
+                String mensaje = atacante.nombre + " destruye a " + defensor.nombre + ". Daño a LP: " + dano;
+                if (jDefensor.lp <= 0) {
+                    jDefensor.lp = 0;
+                    mensaje += " ¡El jugador defensor se ha quedado sin LP! ¡Derrota!";
+                }
+                return mensaje;
             } else if(atacante.getAtk() == defensor.getAtk()) {
                 return "Ambos monstruos se destruyen por empate de ATK.";
             } else {
@@ -38,6 +43,11 @@ public class LogicaCombate implements Batallable {
     @Override
     public String ejecutarAtaque(Monstruo atacante, Jugador jDefensor) {
         jDefensor.lp -= atacante.getAtk();
-        return "Ataque directo de " + atacante.nombre + ". Daño a LP: " + atacante.getAtk();
+        String mensaje = "Ataque directo de " + atacante.nombre + ". Daño a LP: " + atacante.getAtk();
+        if (jDefensor.lp <= 0) {
+            jDefensor.lp = 0;
+            mensaje += " ¡El jugador defensor se ha quedado sin LP! ¡Derrota!";
+        }
+        return mensaje;
     }
 }
