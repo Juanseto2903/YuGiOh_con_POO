@@ -2,15 +2,13 @@
 
 Aplicación de escritorio en **Java (Maven + Swing + JUnit 5)** que simula la **Fase de Batalla** del juego de cartas *Yu-Gi-Oh!*, implementando el patrón arquitectónico Modelo-Vista-Controlador (MVC) y persistencia en archivos planos.
 
----
-
 ## Arquitectura del Proyecto (Patrón MVC)
 
 El sistema separa estrictamente la lógica de negocio, la persistencia, la interfaz gráfica y los recursos visuales en paquetes y directorios independientes:
 
 ```text
 YuGiOh_con_POO/
-├── Diagrams/                        # Diagrama de clases UML (.drawio / .png) y capturas de la GUI
+├── Diagrams/                        # Diagramas UML (.drawio / .png) y capturas de evolución de la GUI
 ├── src/main/java/
 │   ├── modelo/
 │   │   ├── ComponenteJuego.java     # Clase abstracta base (static final FRANQUICIA, abstract mostrarDetalle)
@@ -26,29 +24,31 @@ YuGiOh_con_POO/
 │   │   └── VistaBatalla.java        # Ventana principal de batalla con paneles de Atacante/Defensor y validaciones
 │   └── com/mycompany/yugioh_con_poo/
 │       └── YuGiOh_con_POO.java      # Clase Main: Ejecuta los 2 reportes dinámicos (ArrayList) y lanza la GUI
+├── src/main/resources/
+│   └── Imagen.jpg                   # Recurso gráfico temático integrado en la cabecera de la GUI
 ├── src/test/java/
 │   └── modelo/
 │       └── LogicaCombateTest.java   # Suite de pruebas unitarias automatizadas con JUnit 5
 └── historial_combate.txt            # Archivo de persistencia generado con el registro de cada duelo
 ```
 
----
+## Evolución Visual e Ingeniería de Software
 
-## Vista Previa e Ingeniería de Software
+### 1. Diagrama de Clases UML
+![Diagrama de Clases UML](Diagrams/Diagrama_Clases_YugiOh.png)
 
-*(Asegúrate de guardar las imágenes dentro de la carpeta `Diagrams/` con estos mismos nombres para que se rendericen automáticamente en GitHub)*:
+### 2. Interfaz Gráfica (`VistaBatalla`)
 
-### Interfaz Gráfica (`VistaBatalla`)
-![Interfaz Gráfica](Diagrams/captura_jframe.png)
+#### Versión Final (Diseño Temático y Paneles Estructurados)
+![Interfaz Gráfica Versión Final](Diagrams/captura_jframe_FinalVersion.png)
 
-### Diagrama de Clases UML
-![Diagrama de Clases](Diagrams/Diagrama_Clases_YugiOh.png)
-
----
+#### Prototipo Inicial (Pruebas de Funcionalidad)
+![Prototipo Inicial](Diagrams/captura_jframe.png)
 
 ## Cumplimiento de Requerimientos
 
 ### 1. Diseño UML y Principios de POO
+
 * **Clases e interfaz implementada:** El sistema cuenta con 9 componentes distribuidos en el diagrama (`ComponenteJuego`, `Monstruo`, `Jugador`, `Batallable`, `LogicaCombate`, `GestorPersistencia`, `ControladorBatalla`, `VistaBatalla` y `YuGiOh_con_POO`).
 * **Relaciones completas:**
   * **Herencia:** `Monstruo` y `Jugador` extienden de la clase abstracta `ComponenteJuego`.
@@ -63,7 +63,8 @@ YuGiOh_con_POO/
 * **Reportes en estructuras dinámicas (`Main`):** La clase `YuGiOh_con_POO` almacena objetos en `ArrayList<Monstruo>` y `ArrayList<Jugador>` e imprime dos reportes detallados por consola al iniciar.
 
 ### 2. Requerimientos Funcionales y Reglas de Combate
-* **RF1 (Gestión de Jugadores):** Inicialización de duelistas con `8000 LP` y control de límite mínimo en `0 LP` con aviso de derrota.
+
+* **RF1 (Gestión de Jugadores):** Inicialización de duelistas con `8000 LP` y control de límite mínimo en `0 LP` con aviso emergente de derrota.
 * **RF2 (Gestión de Cartas):** Creación de monstruos con Nombre, ATK, DEF y Posición (`ATAQUE` / `DEFENSA`).
 * **RF3 (Lógica de Combate):**
   * **Ataque vs. Ataque:** Si `ATK Atacante > ATK Defensor`, el monstruo defensor es destruido y el jugador defensor pierde LP equivalentes a la diferencia.
@@ -72,15 +73,17 @@ YuGiOh_con_POO/
 * **RF4 (Persistencia):** Cada turno se agrega automáticamente al archivo `historial_combate.txt`.
 
 ### 3. Pruebas Unitarias (JUnit 5)
+
 La clase `LogicaCombateTest` valida matemáticamente y de forma independiente:
+
 1. Reducción de LP en ataque directo (`testAtaqueDirectoReduceLP`).
 2. Cálculo de diferencia de ATK y destrucción en Ataque vs. Ataque (`testAtaqueVsAtaque`).
 3. Destrucción sin daño a LP en Ataque vs. Defensa (`testAtaqueVsDefensaNoReduceLP`).
 
 ### 4. Control de Versiones con Git y GitHub
-* Desarrollo estructurado en rama personal (`juan_torres_dev`) con historial incremental de commits y fusión hacia `main` mediante **Pull Request**.
 
----
+* Desarrollo estructurado en rama personal (`juan_torres_dev`) con historial incremental de commits y fusión hacia `main` mediante **Pull Request**.
+* **Repositorio Oficial:** <https://github.com/Juanseto2903/YuGiOh_con_POO>
 
 ## Ejecución del Proyecto y Pruebas
 
@@ -88,9 +91,8 @@ La clase `LogicaCombateTest` valida matemáticamente y de forma independiente:
 2. **Ejecutar Pruebas Unitarias (JUnit 5):** Clic derecho sobre el proyecto -> `Test` (o `Alt + F6`).
 3. **Ejecutar el Simulador:** Clic derecho sobre el proyecto -> `Run` (o `F6`).
 
----
-
 ## Autor
+
 * **Estudiante:** Juan Sebastián Torres Pantoja
 * **Programa:** Ingeniería de Datos e Inteligencia Artificial
 * **Institución:** Universidad Autónoma de Occidente (UAO)
