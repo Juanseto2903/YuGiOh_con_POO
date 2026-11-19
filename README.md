@@ -1,8 +1,8 @@
-# Simulador de Combate Yu-Gi-Oh! — Fase de Batalla (MVC)
+# 🃏 Simulador de Combate Yu-Gi-Oh! — Fase de Batalla (MVC)
 
 Aplicación de escritorio en **Java (Maven + Swing + JUnit 5)** que simula la **Fase de Batalla** del juego de cartas *Yu-Gi-Oh!*, implementando el patrón arquitectónico Modelo-Vista-Controlador (MVC) y persistencia en archivos planos.
 
-## Arquitectura del Proyecto (Patrón MVC)
+## 🏗️ Arquitectura del Proyecto (Patrón MVC)
 
 El sistema separa estrictamente la lógica de negocio, la persistencia, la interfaz gráfica y los recursos visuales en paquetes y directorios independientes:
 
@@ -83,9 +83,8 @@ La clase `LogicaCombateTest` valida matemáticamente y de forma independiente:
 ### 4. Control de Versiones con Git y GitHub
 
 * Desarrollo estructurado en rama personal (`juan_torres_dev`) con historial incremental de commits y fusión hacia `main` mediante **Pull Request**.
-* **Repositorio Oficial:** <https://github.com/Juanseto2903/YuGiOh_con_POO>
 
-## Ejecución del Proyecto y Pruebas
+## ▶️ Ejecución del Proyecto y Pruebas
 
 1. **Abrir en NetBeans:** `File -> Open Project` y seleccionar la carpeta del proyecto Maven `YuGiOh_con_POO`.
 2. **Ejecutar Pruebas Unitarias (JUnit 5):** Clic derecho sobre el proyecto -> `Test` (o `Alt + F6`).
